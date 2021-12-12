@@ -11,16 +11,8 @@ createServer({
     
     server.db.loadData ({
     transactions:[
-      {
-      id:1,
-      title:"Site",
-      type:'deposit',
-      category:'Desenvolvimento de site',
-      amount:6000,
-      createdAt:new Date('2021-12-12 20:08:00'),
-    },
     {
-      id:2,
+      id:1,
       title:"Casa",
       type:'withdraw',
       category:'Pagamento do aluguel',
