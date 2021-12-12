@@ -1,11 +1,23 @@
 import { Container } from "./styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
+
+interface Transaction {
+  id:number;
+  title:string;
+  description:string;
+  amount:number;
+  createdAt:string;
+  type:string;
+  category:string;
+}
 export function TrasanctionsTable (){
+  const [trasanctions, setTrasanctions] = useState<Transaction[]>([]);
+
   useEffect(()=>{
     api.get('trasanctions')
-    .then(res=> console.log(res.data))
+    .then(res=> setTrasanctions(res.data.transactions))
   },[])
   return(
     <Container>
@@ -19,18 +31,16 @@ export function TrasanctionsTable (){
           </tr>
         </thead> 
         <tbody>
-          <tr>
-            <td>Desenvolvimento de site</td>
-            <td className="deposit"> R$1220</td>
-            <td> Desenvolvimento</td>
-            <td> 08/12/2021</td>
+          {trasanctions.map(transaction => {
+            return (
+          <tr key={transaction.id}>
+            <td>{transaction.title}</td>
+            <td className={transaction.type}> {transaction.amount}</td>
+            <td> {transaction.category}</td>
+            <td>{transaction.createdAt}</td>
           </tr>
-          <tr>
-            <td>Alugue</td>
-            <td className="withDraw">- R$700</td>
-            <td>Moradia</td>
-            <td> 08/12/2021</td>
-          </tr>
+            );
+          })}
         </tbody> 
       </table>
     </Container>
