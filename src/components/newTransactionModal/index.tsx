@@ -1,9 +1,10 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 import { api } from '../../services/api';
+import { TrasactionsContext } from '../../TransactionsContext';
 import { Container, TransactionTypeContainer, RadioBox } from './styles';
 
 
@@ -12,6 +13,8 @@ interface NewTransactionModalProps{
   onRequestClose: ()=> void //Function que não retorna nada;
 }
 export function NewTransactionModal ({ isOpen, onRequestClose}:NewTransactionModalProps) {
+  const transctions = useContext(TrasactionsContext);
+  
   const [title, setTitle] =useState('');
   const [category, setCategory] = useState('');
   const [value, setValue] =useState(0);
