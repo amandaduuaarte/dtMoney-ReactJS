@@ -25,14 +25,14 @@ createServer({
   routes(){
     this.namespace = 'api'; //pega todas chamadas com api e direciona ao miragejs
 
-    this.get('/trasanctions', ()=>{
+    this.get('/transactions', ()=>{
       return this.schema.all('transaction');
     }) //requição de busca de listagem
-    this.post('/trasanctions',(schema,request)=>{
+    this.post('/transactions',(schema,request)=>{
 
       const data = JSON.parse(request.requestBody)
 
-      return schema.create('trasaction',data);
+      return schema.create('transaction',data);
     })
   }
 })
