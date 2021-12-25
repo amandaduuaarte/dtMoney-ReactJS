@@ -11,14 +11,6 @@ createServer({
     
     server.db.loadData ({
     transactions:[
-    {
-      id:1,
-      title:"Casa",
-      type:'withdraw',
-      category:'Pagamento do aluguel',
-      amount:1200,
-      createdAt:new Date('2021-12-20 20:08:00'),
-    } 
   ]
   })
   },
